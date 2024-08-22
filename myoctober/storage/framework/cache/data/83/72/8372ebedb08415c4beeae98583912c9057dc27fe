@@ -1,0 +1,12 @@
+1724383193a:1:{s:23:"site/head/head-meta.htm";a:5:{s:8:"fileName";s:23:"site/head/head-meta.htm";s:7:"content";s:233:"{# Global Meta Tags #}
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="October CMS">
+<meta name="generator" content="October CMS">
+{% meta %}
+";s:5:"mtime";i:1709519345;s:6:"markup";s:232:"{# Global Meta Tags #}
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="October CMS">
+<meta name="generator" content="October CMS">
+{% meta %}";s:4:"code";N;}}
