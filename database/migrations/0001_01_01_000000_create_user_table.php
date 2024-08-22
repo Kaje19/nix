@@ -17,9 +17,6 @@ return new class extends Migration
             $table->string('client_lname',20);
             $table->bigInteger('client_contact');
             $table->string('client_email',30);
-            $table->integer('booking_id');
-            $table->integer('package_id');
-            $table->integer('review_id');
             $table->timestamp('created_at')->nullable();
         });
 
@@ -33,10 +30,7 @@ return new class extends Migration
             $table->date('coor_birthday');
             $table->string('gender',6);
             $table->bigInteger('coor_contact');
-            $table->string('coor_city',20);
-            $table->integer('review_id');
-            $table->integer('package_id');
-            $table->integer('booking_id');
+            $table->string('city',20);
             $table->timestamp('acc_created')->nullable();
         });
 

@@ -28,11 +28,6 @@ return new class extends Migration
             $table->binary('photo');
             $table->decimal('price',6,2);
             $table->integer('guest');
-            $table->integer('service_id');
-            $table->integer('review_id');
-            $table->integer('booking_id');
-            $table->integer('coor_id');
-            $table->integer('reco_id');
             $table->timestamp('created_at')->nullable();
         });
 
@@ -44,7 +39,7 @@ return new class extends Migration
             $table->timestamp('created_at')->nullable();
         });
 
-        Schema::create('review', function (Blueprint $table) {
+        Schema::create('reviews', function (Blueprint $table) {
             $table->integer('review_id',true)->primary();
             $table->integer('rating');
             $table->string('comments',30);

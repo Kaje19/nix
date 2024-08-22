@@ -15,13 +15,12 @@ return new class extends Migration
             $table->integer('boking_id',true)->primary();
             $table->string('category',30);
             $table->string('location',50);
-            $table->date('booking_date');
-            $table->time('booking_time');
+            $table->date('event_date');
+            $table->time('event_time');
             $table->string('notes',100);
             $table->string('status',10);
             $table->integer('client_id');
             $table->integer('package_id');
-            $table->integer('coor_id');
             $table->timestamp('created_at');
         });
 
@@ -30,17 +29,18 @@ return new class extends Migration
             $table->string('event_type',20);
             $table->string('theme',20);
             $table->decimal('budget_range',6,2);
+            $table->integer('guest_count');
             $table->integer('event_id');
             $table->integer('client_id');
-            $table->integer('reco_id');
             $table->timestamp('created_at');
         });
 
-        Schema::create('recommendations', function (Blueprint $table) {
+        Schema::create('recommendation', function (Blueprint $table) {
             $table->integer('reco_id',true)->primary();
             $table->integer('client_id');
             $table->integer('event_id');
             $table->integer('package_id');
+            $table->timestamp('created_at');
         });
     }
 
