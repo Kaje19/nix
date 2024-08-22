@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('event', function (Blueprint $table) {
-            $table->integer('event_id')->primary();
+            $table->integer('event_id',true)->primary();
             $table->string('event_name',20);
             $table->date('event_date');
             $table->decimal('budget',6,2);
@@ -21,7 +21,7 @@ return new class extends Migration
         });
 
         Schema::create('event_packages', function (Blueprint $table) {
-            $table->integer('package_id')->primary();
+            $table->integer('package_id',true)->primary();
             $table->string('package_name',20);
             $table->string('package_type',20);
             $table->string('description',250);
@@ -37,7 +37,7 @@ return new class extends Migration
         });
 
         Schema::create('services', function (Blueprint $table) {
-            $table->integer('service_id')->primary();
+            $table->integer('service_id',true)->primary();
             $table->string('inclusions',20);
             $table->integer('quantity');
             $table->integer('package_id');
@@ -45,7 +45,7 @@ return new class extends Migration
         });
 
         Schema::create('review', function (Blueprint $table) {
-            $table->integer('review_id')->primary();
+            $table->integer('review_id',true)->primary();
             $table->integer('rating');
             $table->string('comments',30);
             $table->integer('package_id');
