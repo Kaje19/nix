@@ -1,0 +1,154 @@
+1724383193a:1:{s:13:"blog/post.htm";a:12:{s:8:"fileName";s:13:"blog/post.htm";s:7:"content";s:2790:"##
+url = "/blog/post/:slug/:id"
+layout = "blog"
+title = "Display a Blog Post"
+meta_title = "{{ blog.title }} - Blog"
+
+[section post]
+handle = "Blog\Post"
+identifier = "id"
+
+[collection blogCategories]
+handle = "Blog\Category"
+
+[resources]
+vars[activeNavLink] = 'blog'
+==
+{% if post is empty %}
+    {% do abort(404) %}
+{% elseif post.slug and post.slug != this.param.slug %}
+    {% do redirect(''|page({ slug: post.slug }), 301) %}
+{% endif %}
+
+<article class="card card-post card-primary">
+    {% if post.banner %}
+        <div class="card-banner banner-lg" style="background-image:url('{{ post.banner.path }}')"></div>
+    {% else %}
+        <div class="card-banner banner-lg" style="background-image:url('{{ partial('site/helpers/random-stock-image') }}')"></div>
+    {% endif %}
+
+    <div class="card-body card-lg">
+        <h1 class="card-title">
+            {{ post.title }}
+        </h1>
+
+        {% if post.entry_type == 'markdown_post' %}
+            {{ post.content|md|content }}
+        {% else %}
+            {{ post.content|content }}
+        {% endif %}
+
+        <div class="blog-post-gallery">
+            {% partial 'controls/gallery-slider' gallery=post.gallery %}
+        </div>
+
+        <div class="row pt-3">
+            <div class="col-md-8">
+                <div class="card-meta">
+                    {% if post.categories %}
+                        <div class="meta-item meta-categories">
+                            Posted in
+                            {% for category in post.categories %}
+                                <a href="{{ 'blog/category'|page({ slug: category.slug, id: category.id }) }}">{{ category.title }}</a>{{ not loop.last ? ',' }}
+                            {% endfor %}
+                        </div>
+                        <div class="meta-item px-2">
+                            &bull;
+                        </div>
+                    {% endif %}
+                    <div class="meta-item text-icon text-icon-date">
+                        {{ post.published_at_date|date('j M Y') }}
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 text-end">
+                <div class="share-button">
+                    {% partial 'elements/share-button' %}
+                </div>
+            </div>
+        </div>
+    </div>
+    {% if post.author %}
+        <div class="card-divider"></div>
+        <div class="card-body card-lg">
+            {% partial 'elements/user-panel-author' user=post.author %}
+        </div>
+    {% endif %}
+    <div class="card-divider"></div>
+    <div class="card-body card-lg">
+        {% partial 'blog/comment-list' %}
+    </div>
+    <div class="card-divider"></div>
+    <div class="card-body card-lg">
+        {% partial 'blog/comment-form' %}
+    </div>
+</article>
+";s:5:"mtime";i:1709519345;s:6:"markup";s:2518:"{% if post is empty %}
+    {% do abort(404) %}
+{% elseif post.slug and post.slug != this.param.slug %}
+    {% do redirect(''|page({ slug: post.slug }), 301) %}
+{% endif %}
+
+<article class="card card-post card-primary">
+    {% if post.banner %}
+        <div class="card-banner banner-lg" style="background-image:url('{{ post.banner.path }}')"></div>
+    {% else %}
+        <div class="card-banner banner-lg" style="background-image:url('{{ partial('site/helpers/random-stock-image') }}')"></div>
+    {% endif %}
+
+    <div class="card-body card-lg">
+        <h1 class="card-title">
+            {{ post.title }}
+        </h1>
+
+        {% if post.entry_type == 'markdown_post' %}
+            {{ post.content|md|content }}
+        {% else %}
+            {{ post.content|content }}
+        {% endif %}
+
+        <div class="blog-post-gallery">
+            {% partial 'controls/gallery-slider' gallery=post.gallery %}
+        </div>
+
+        <div class="row pt-3">
+            <div class="col-md-8">
+                <div class="card-meta">
+                    {% if post.categories %}
+                        <div class="meta-item meta-categories">
+                            Posted in
+                            {% for category in post.categories %}
+                                <a href="{{ 'blog/category'|page({ slug: category.slug, id: category.id }) }}">{{ category.title }}</a>{{ not loop.last ? ',' }}
+                            {% endfor %}
+                        </div>
+                        <div class="meta-item px-2">
+                            &bull;
+                        </div>
+                    {% endif %}
+                    <div class="meta-item text-icon text-icon-date">
+                        {{ post.published_at_date|date('j M Y') }}
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 text-end">
+                <div class="share-button">
+                    {% partial 'elements/share-button' %}
+                </div>
+            </div>
+        </div>
+    </div>
+    {% if post.author %}
+        <div class="card-divider"></div>
+        <div class="card-body card-lg">
+            {% partial 'elements/user-panel-author' user=post.author %}
+        </div>
+    {% endif %}
+    <div class="card-divider"></div>
+    <div class="card-body card-lg">
+        {% partial 'blog/comment-list' %}
+    </div>
+    <div class="card-divider"></div>
+    <div class="card-body card-lg">
+        {% partial 'blog/comment-form' %}
+    </div>
+</article>";s:4:"code";N;s:3:"url";s:20:"/blog/post/:slug/:id";s:6:"layout";s:4:"blog";s:5:"title";s:19:"Display a Blog Post";s:10:"meta_title";s:23:"{{ blog.title }} - Blog";s:12:"section post";a:2:{s:6:"handle";s:9:"Blog\Post";s:10:"identifier";s:2:"id";}s:25:"collection blogCategories";a:1:{s:6:"handle";s:13:"Blog\Category";}s:9:"resources";a:1:{s:4:"vars";a:1:{s:13:"activeNavLink";s:4:"blog";}}}}
